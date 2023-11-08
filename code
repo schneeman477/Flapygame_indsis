@@ -1,0 +1,73 @@
+print(""" Bienvenidos al programa.
+      Este es un juego
+      Creado por:   <3  , SCHNEMAN477  ,         ,          """)
+
+
+#Esto es para llamar a la libreria
+
+import pygame,sys
+
+# Este codigo inicia el Pygame siempre poner
+pygame.init()
+
+# Crea una ventana de 800x600 pixeles
+Tamaño_pantalla = (800,600)
+#Reloj
+Reloj = pygame.time.Clock()
+#Colores de la pantalla
+negro = ( 0, 0, 0)
+blanco = ( 255, 255, 255)
+verde = ( 0, 255, 0)
+rojo = ( 255, 0, 0)
+azul = ( 0, 0, 255)
+
+pantalla = pygame.display.set_mode(Tamaño_pantalla)
+
+# Esto sirve para poner un nombre a la ventana
+pygame.display.set_caption("Mi primera chamba")
+#Logica del juego
+#Cordenadas
+x_cordenada = 50
+y_cordenada = 50
+#Velocidad del pajaro
+x_velocidad = 2
+y_velocidad = 2
+# Bucle principal del juego
+while True:
+
+    # Actualiza la pantalla
+    pygame.display.update()
+
+    # Procesa los eventos del usuario
+    for evento in pygame.event.get():
+        if evento.type == pygame.QUIT:
+            sys.exit()
+            
+        # Si el usuario cierra la ventana, termina el juego
+    if y_cordenada <= 412:
+        
+
+        x_cordenada += x_velocidad    
+        y_cordenada += y_velocidad
+       
+# Color de fondo
+    pantalla.fill(verde)
+
+#-----------------------                   [Ancho de la linea]
+# ZONA DE DIBUJO     [Arriba o abajo izquierda] 👇  [Arriba o abajo derecha]  [Grosor]
+#                                          👇    👇   👇                         👇
+    pygame.draw.line(pantalla, negro, [0, 500], [800,500],                       30)
+
+#                       [Posicion en pantalla X   Y]         [Base y altura]
+#                                             👇  👇              👇  👇       
+    pygame.draw.rect(pantalla, azul, (x_cordenada,y_cordenada,   80, 80))
+    
+
+
+# ZONA DE DIBUJO
+#-----------------------
+
+# Actualizar pantalla
+    
+    pygame.display.flip()
+    Reloj.tick(60)
